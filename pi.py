@@ -52,12 +52,12 @@ def powers_of_ten(begin, end):
 
 
 def area(circle, pointCount):
-    points = []
+    points = pointCount*[None]
     pointsInCircle = 0
 
     for i in range(pointCount):
         point = Point.createRandom(circle)
-        points.append(point)
+        points[i] = point
         if circle.isPointIn(point):
             pointsInCircle += 1
 
@@ -99,7 +99,7 @@ with open("results.csv", "w", newline='') as resultscsvfile:
     resultcsv = csv.DictWriter(resultscsvfile, fieldnames=resultFieldnames)
     resultcsv.writeheader()
 
-    for radius in powers_of_ten(1, 3):
+    for radius in powers_of_ten(0, 3):
         circle = Circle(float(radius))
         print(64 * '-')
         print(circle)
